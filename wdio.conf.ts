@@ -31,7 +31,7 @@ export const config: Options.Testrunner = {
     // of the config file unless it's absolute.
     //
     specs: [
-        './test/specs/**/*.ts'
+        './test/specs/**/*spec.ts'
     ],
     // Patterns to exclude.
     exclude: [
@@ -61,11 +61,14 @@ export const config: Options.Testrunner = {
     //
     capabilities: [{
         // capabilities for local Appium web tests on an Android Emulator
-        platformName: 'Android',
-        browserName: 'Chrome',
-        'appium:deviceName': 'Android GoogleAPI Emulator',
+        'platformName': 'Android',
+        'appium:udid': 'emulator-5554',
+        'appium:deviceName': 'Pixel_6_Pro_API_31',
         'appium:platformVersion': '12.0',
-        'appium:automationName': 'UiAutomator2'
+        'appium:automationName': 'UiAutomator2',
+        'appium:appPackage': 'com.google.android.deskclock',
+        'appium:appActivity': 'com.android.deskclock.DeskClock',
+        'appium:appWaitActivity': 'com.android.deskclock.DeskClock'
     }],
 
     //
@@ -115,7 +118,7 @@ export const config: Options.Testrunner = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['appium', 'visual'],
+    services: ['appium'],
 
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
